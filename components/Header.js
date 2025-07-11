@@ -32,46 +32,46 @@ export default function Header({
   };
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50">
+    <header className="bg-white/95 backdrop-blur-md shadow-xl sticky top-0 z-50 border-b border-gray-100">
       {/* Top Bar */}
-      <div className="bg-[#0071ce] text-white py-2 px-4">
+      <div className="gradient-primary text-white py-3 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between text-sm">
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-2 hover:text-yellow-200 transition-colors">
               <MapPin className="h-4 w-4" />
               <span>Deliver to 12345</span>
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <span>Free shipping on orders $35+</span>
+            <span className="animate-pulse">🚚 Free shipping on orders $35+</span>
             <span>|</span>
-            <span>Store Directory</span>
+            <span className="hover:text-yellow-200 transition-colors cursor-pointer">📍 Store Directory</span>
           </div>
         </div>
       </div>
 
       {/* Main Header */}
-      <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-4">
             <button
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              className="lg:hidden p-3 rounded-xl hover:bg-gray-100 transition-all-smooth hover:scale-105"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
             <div 
-              className="text-[#0071ce] font-bold text-2xl cursor-pointer"
+              className="text-[#0071ce] font-bold text-3xl cursor-pointer hover:scale-105 transition-all-smooth"
               onClick={handleLogoClick}
             >
-              <span className="bg-[#ffc220] text-[#0071ce] px-2 py-1 rounded-lg">W</span>
+              <span className="gradient-secondary text-[#0071ce] px-3 py-2 rounded-xl shadow-medium animate-float">W</span>
               <span className="ml-1">almart</span>
             </div>
           </div>
 
           {/* Search Bar */}
-          <div className="flex-1 max-w-2xl mx-8 hidden md:block">
+          <div className="flex-1 max-w-3xl mx-8 hidden md:block">
             <SearchWithRecommendations
               onSearch={onSearch}
               searchQuery={searchQuery}
@@ -80,21 +80,21 @@ export default function Header({
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-6">
-            <button className="hidden md:flex items-center space-x-2 hover:text-[#0071ce] transition-colors">
+            <button className="hidden md:flex items-center space-x-2 hover:text-[#0071ce] transition-all-smooth hover:scale-105 p-2 rounded-lg">
               <Heart className="h-6 w-6" />
               <span className="text-sm font-medium">Reorder</span>
             </button>
             
-            <button className="flex items-center space-x-2 hover:text-[#0071ce] transition-colors">
+            <button className="flex items-center space-x-2 hover:text-[#0071ce] transition-all-smooth hover:scale-105 p-2 rounded-lg">
               <User className="h-6 w-6" />
               <span className="text-sm font-medium hidden md:block">Account</span>
             </button>
             
-            <button className="relative flex items-center space-x-2 hover:text-[#0071ce] transition-colors">
+            <button className="relative flex items-center space-x-2 hover:text-[#0071ce] transition-all-smooth hover:scale-105 p-2 rounded-lg">
               <ShoppingCart className="h-6 w-6" />
               <span className="text-sm font-medium hidden md:block">Cart</span>
               {cartItemsCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#ffc220] text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 gradient-secondary text-black text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center shadow-medium animate-pulse-glow">
                   {cartItemsCount}
                 </span>
               )}
@@ -112,12 +112,12 @@ export default function Header({
       </div>
 
       {/* Navigation */}
-      <nav className={`border-t border-gray-200 ${isMenuOpen ? 'block' : 'hidden lg:block'}`}>
+      <nav className={`border-t border-gray-200 bg-gradient-to-r from-gray-50 to-white ${isMenuOpen ? 'block' : 'hidden lg:block'}`}>
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-8 py-4">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-8 py-5">
             <button
               onClick={() => handleCategoryClick("")}
-              className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-[#0071ce] transition-colors mb-4 lg:mb-0"
+              className="flex items-center space-x-2 text-sm font-semibold text-gray-700 hover:text-[#0071ce] transition-all-smooth mb-4 lg:mb-0 p-2 rounded-lg hover:bg-white hover:shadow-soft"
             >
               <Menu className="h-4 w-4" />
               <span>All Departments</span>
@@ -127,9 +127,9 @@ export default function Header({
                 <button
                   key={category.id}
                   onClick={() => handleCategoryClick(category.slug)}
-                  className={`text-sm font-medium transition-colors py-2 lg:py-0 text-left ${
+                  className={`text-sm font-semibold transition-all-smooth py-3 lg:py-2 px-3 rounded-lg text-left hover:bg-white hover:shadow-soft ${
                     selectedCategory === category.slug
-                      ? 'text-[#0071ce] font-bold'
+                      ? 'text-[#0071ce] font-bold bg-blue-50 shadow-soft'
                       : 'text-gray-700 hover:text-[#0071ce]'
                   }`}
                 >

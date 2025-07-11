@@ -49,25 +49,25 @@ export default function ProductGrid({
   const categories = [...new Set(productsToShow.map(p => p.category))];
 
   return (
-    <div className="py-8">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
+    <div className="py-12">
+      <div className="flex items-center justify-between mb-8 animate-fade-in">
+        <h2 className="text-3xl md:text-4xl font-black text-gradient-primary">{title}</h2>
         
         {showFilters && (
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-6">
             {/* View Mode Toggle */}
-            <div className="flex items-center border rounded-lg">
+            <div className="flex items-center border-2 border-gray-200 rounded-xl overflow-hidden shadow-soft">
               <button
                 onClick={() => setViewMode("grid")}
-                className={`p-2 ${viewMode === "grid" ? "bg-[#0071ce] text-white" : "text-gray-600"}`}
+                className={`p-3 transition-all-smooth ${viewMode === "grid" ? "gradient-primary text-white shadow-medium" : "text-gray-600 hover:bg-gray-50"}`}
               >
-                <Grid className="h-4 w-4" />
+                <Grid className="h-5 w-5" />
               </button>
               <button
                 onClick={() => setViewMode("list")}
-                className={`p-2 ${viewMode === "list" ? "bg-[#0071ce] text-white" : "text-gray-600"}`}
+                className={`p-3 transition-all-smooth ${viewMode === "list" ? "gradient-primary text-white shadow-medium" : "text-gray-600 hover:bg-gray-50"}`}
               >
-                <List className="h-4 w-4" />
+                <List className="h-5 w-5" />
               </button>
             </div>
 
@@ -75,20 +75,20 @@ export default function ProductGrid({
             <div className="relative">
               <button
                 onClick={() => setShowFilterMenu(!showFilterMenu)}
-                className="flex items-center space-x-2 px-4 py-2 border rounded-lg hover:bg-gray-50"
+                className="flex items-center space-x-3 px-5 py-3 border-2 border-gray-200 rounded-xl hover:bg-gray-50 transition-all-smooth shadow-soft hover:shadow-medium"
               >
-                <Filter className="h-4 w-4" />
-                <span>Filter</span>
+                <Filter className="h-5 w-5" />
+                <span className="font-semibold">🔍 Filter</span>
               </button>
               
               {showFilterMenu && (
-                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10">
-                  <div className="p-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                <div className="absolute right-0 mt-3 w-56 bg-white border-2 border-gray-100 rounded-xl shadow-strong z-10 animate-scale-in">
+                  <div className="p-4">
+                    <label className="block text-sm font-bold text-gray-700 mb-3">📂 Category</label>
                     <select
                       value={filterBy}
                       onChange={(e) => setFilterBy(e.target.value)}
-                      className="w-full p-2 border rounded"
+                      className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-[#0071ce] transition-colors"
                     >
                       <option value="all">All Categories</option>
                       {categories.map(category => (
@@ -103,18 +103,18 @@ export default function ProductGrid({
             </div>
 
             {/* Sort Dropdown */}
-            <div className="flex items-center space-x-2">
-              <SortAsc className="h-4 w-4 text-gray-600" />
+            <div className="flex items-center space-x-3">
+              <SortAsc className="h-5 w-5 text-gray-600" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0071ce]"
+                className="border-2 border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-[#0071ce] focus:border-[#0071ce] transition-all-smooth shadow-soft"
               >
                 <option value="featured">Featured</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="rating">Highest Rated</option>
-                <option value="name">Name: A to Z</option>
+                <option value="price-low">💰 Price: Low to High</option>
+                <option value="price-high">💎 Price: High to Low</option>
+                <option value="rating">🌟 Highest Rated</option>
+                <option value="name">🔤 Name: A to Z</option>
               </select>
             </div>
           </div>
@@ -122,17 +122,17 @@ export default function ProductGrid({
       </div>
 
       {/* Products Count */}
-      <div className="mb-4">
-        <p className="text-sm text-gray-600">
-          Showing {sortedAndFilteredProducts.length} of {productsToShow.length} products
+      <div className="mb-6 animate-fade-in">
+        <p className="text-lg font-semibold text-gray-600">
+          📦 Showing <span className="text-[#0071ce] font-bold">{sortedAndFilteredProducts.length}</span> of <span className="font-bold">{productsToShow.length}</span> products
         </p>
       </div>
 
       {/* Products Grid */}
       <div className={`${
         viewMode === "grid" 
-          ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" 
-          : "space-y-4"
+          ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8" 
+          : "space-y-6"
       }`}>
         {sortedAndFilteredProducts.map((product) => (
           <ProductCard
@@ -145,8 +145,10 @@ export default function ProductGrid({
       </div>
 
       {sortedAndFilteredProducts.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-lg text-gray-600">No products found matching your criteria.</p>
+        <div className="text-center py-16 animate-fade-in">
+          <div className="text-6xl mb-4">😔</div>
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">No products found</h3>
+          <p className="text-lg text-gray-600">Try adjusting your filters or search criteria</p>
         </div>
       )}
     </div>

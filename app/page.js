@@ -44,7 +44,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <Header 
         cartItems={cartItems} 
         onSearch={handleSearch}
@@ -53,19 +53,19 @@ export default function Home() {
         selectedCategory=""
       />
       
-      <main className="max-w-7xl mx-auto px-4 py-6">
+      <main className="max-w-7xl mx-auto px-4 py-8">
         {/* Hero Section */}
-        <section className="mb-12">
+        <section className="mb-16">
           <Hero />
         </section>
 
         {/* Categories Section */}
-        <section className="mb-12">
+        <section className="mb-16">
           <CategoryGrid />
         </section>
 
         {/* Featured Products */}
-        <section className="mb-12">
+        <section className="mb-16">
           <ProductGrid
             title="Trending Now"
             productsToShow={featuredProducts}
@@ -75,12 +75,13 @@ export default function Home() {
         </section>
 
         {/* Sale Products */}
-        <section className="mb-12 bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-6">
-          <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">
-              <span className="text-red-600">Hot Deals</span> & Special Offers
+        <section className="mb-16 bg-gradient-to-r from-red-50 via-orange-50 to-yellow-50 rounded-3xl p-8 shadow-strong animate-fade-in">
+          <div className="text-center mb-8">
+            <div className="text-6xl mb-4 animate-float">🔥</div>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+              <span className="text-gradient-danger">Hot Deals</span> & Special Offers
             </h2>
-            <p className="text-lg text-gray-600">Limited time offers you don't want to miss</p>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">⏰ Limited time offers you absolutely don't want to miss!</p>
           </div>
           <ProductGrid
             title=""
@@ -91,7 +92,7 @@ export default function Home() {
         </section>
 
         {/* All Products */}
-        <section className="mb-12">
+        <section className="mb-16">
           <ProductGrid
             title="All Products"
             productsToShow={products}

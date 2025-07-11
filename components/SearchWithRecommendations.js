@@ -184,8 +184,8 @@ export default function SearchWithRecommendations({
           <input
             ref={searchRef}
             type="text"
-            placeholder="Search everything at Walmart online and in store"
-            className="flex-1 px-6 py-3 text-lg rounded-full outline-none"
+            placeholder="🔍 Search everything at Walmart online and in store"
+            className="flex-1 px-6 py-4 text-lg rounded-full outline-none bg-transparent"
             value={localQuery}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
@@ -196,16 +196,16 @@ export default function SearchWithRecommendations({
             <button
               type="button"
               onClick={clearSearch}
-              className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+              className="p-3 text-gray-400 hover:text-gray-600 transition-all-smooth hover:scale-110 rounded-full hover:bg-gray-100"
             >
               <X className="h-5 w-5" />
             </button>
           )}
           <button
             type="submit"
-            className="bg-[#ffc220] hover:bg-[#ffb800] px-6 py-3 rounded-r-full transition-colors"
+            className="gradient-secondary hover:shadow-glow px-7 py-4 rounded-r-full transition-all-smooth hover:scale-105 btn-scale"
           >
-            <Search className="h-6 w-6 text-gray-700" />
+            <Search className="h-6 w-6 text-gray-800" />
           </button>
         </div>
       </form>
@@ -214,45 +214,45 @@ export default function SearchWithRecommendations({
       {showSuggestions && suggestions.length > 0 && (
         <div
           ref={suggestionsRef}
-          className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg z-50 mt-1 max-h-96 overflow-y-auto"
+          className="absolute top-full left-0 right-0 bg-white border-2 border-gray-100 rounded-2xl shadow-strong z-50 mt-2 max-h-96 overflow-y-auto animate-scale-in"
         >
           {suggestions.map((suggestion, index) => (
             <button
               key={suggestion.id}
               onClick={() => handleSuggestionClick(suggestion)}
-              className={`w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-100 last:border-b-0 transition-colors ${
-                index === selectedIndex ? 'bg-blue-50' : ''
+              className={`w-full px-6 py-4 text-left hover:bg-gray-50 border-b border-gray-100 last:border-b-0 transition-all-smooth hover:shadow-soft ${
+                index === selectedIndex ? 'bg-blue-50 shadow-soft' : ''
               }`}
             >
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-4">
                 {suggestion.type === 'product' && (
                   <img
                     src={suggestion.image}
                     alt={suggestion.text}
-                    className="w-10 h-10 object-cover rounded"
+                    className="w-12 h-12 object-cover rounded-lg shadow-soft"
                   />
                 )}
                 {suggestion.type === 'category' && (
-                  <div className="w-10 h-10 bg-[#0071ce] rounded flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">CAT</span>
+                  <div className="w-12 h-12 gradient-primary rounded-lg flex items-center justify-center shadow-soft">
+                    <span className="text-white font-bold text-sm">📂</span>
                   </div>
                 )}
                 {suggestion.type === 'subcategory' && (
-                  <div className="w-10 h-10 bg-[#ffc220] rounded flex items-center justify-center">
-                    <span className="text-black font-bold text-sm">SUB</span>
+                  <div className="w-12 h-12 gradient-secondary rounded-lg flex items-center justify-center shadow-soft">
+                    <span className="text-black font-bold text-sm">📁</span>
                   </div>
                 )}
                 <div className="flex-1">
-                  <div className="font-medium text-gray-900">
+                  <div className="font-bold text-gray-900 text-lg">
                     {suggestion.text}
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-gray-500 mt-1">
                     {suggestion.type === 'product' ? (
                       <>
                         {suggestion.brand} • in {suggestion.category}
                         {suggestion.subcategory && ` > ${suggestion.subcategory}`}
                         {suggestion.price && (
-                          <span className="ml-2 font-semibold text-[#0071ce]">
+                          <span className="ml-2 font-bold text-[#0071ce] text-base">
                             ${suggestion.price.toFixed(2)}
                           </span>
                         )}
@@ -264,7 +264,7 @@ export default function SearchWithRecommendations({
                     )}
                   </div>
                 </div>
-                <Search className="h-4 w-4 text-gray-400" />
+                <Search className="h-5 w-5 text-gray-400 group-hover:text-[#0071ce] transition-colors" />
               </div>
             </button>
           ))}

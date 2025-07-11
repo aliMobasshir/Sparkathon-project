@@ -62,53 +62,90 @@ const ProductAdvisorChat = ({ products, onClose,subcategoryName, onRecommendatio
   };
 
   return (
-    <div className="flex flex-col h-full bg-zinc-800 rounded-lg p-4">
+    <div className="flex flex-col h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl p-6 shadow-strong">
+      {/* Chat Header */}
+      <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-700">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 gradient-primary rounded-full flex items-center justify-center">
+            <span className="text-white font-bold">🤖</span>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg">AI Shopping Assistant</h3>
+            <p className="text-gray-400 text-sm">Here to help you find the perfect product</p>
+          </div>
+        </div>
+        <button
+          onClick={onClose}
+          className="text-gray-400 hover:text-white transition-all-smooth hover:scale-110 p-2 rounded-full hover:bg-gray-700"
+        >
+          ✕
+        </button>
+      </div>
+
       {/* Chat Window */}
-      <div className="flex-grow overflow-y-auto space-y-4 mb-4 custom-scrollbar">
+      <div className="flex-grow overflow-y-auto space-y-6 mb-6 custom-scrollbar pr-2">
         {messages.length === 0 ? (
-          <div className="text-neutral-400 text-center mt-10">
-            <p className="text-xl font-medium">Need help choosing the right product?</p>
-            <p className="text-sm">Ask me anything!</p>
+          <div className="text-center mt-12 animate-fade-in">
+            <div className="text-6xl mb-4">🛍️</div>
+            <p className="text-xl font-bold text-white mb-2">Need help choosing the right product?</p>
+            <p className="text-gray-400 text-lg">Ask me anything about {subcategoryName}!</p>
           </div>
         ) : (
           messages.map((msg, index) => (
-            <div key={index} className={msg.sender === "user" ? "text-right" : ""}>
-              <div className={`inline-block p-2 rounded-xl ${msg.sender === "user" ? "bg-blue-500 text-white" : "bg-gray-700 text-white"}`}>
+            <div key={index} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"} animate-slide-up`}>
+              <div className={`max-w-[80%] p-4 rounded-2xl shadow-medium ${
+                msg.sender === "user" 
+                  ? "gradient-primary text-white" 
+                  : "bg-gray-700 text-white border border-gray-600"
+              }`}>
                 {msg.sender === "ai" ? (
-                  <div dangerouslySetInnerHTML={{ __html: marked.parse(msg.text) }} />
+                  <div className="prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: marked.parse(msg.text) }} />
                 ) : (
-                  <div><strong>You:</strong> {msg.text}</div>
+                  <div className="font-medium">{msg.text}</div>
                 )}
               </div>
             </div>
           ))
         )}
-        {loading && <p className="text-sm text-gray-400">AI is thinking...</p>}
+        {loading && (
+          <div className="flex justify-start animate-pulse">
+            <div className="bg-gray-700 p-4 rounded-2xl shadow-medium">
+              <div className="flex items-center space-x-2">
+                <div className="flex space-x-1">
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                </div>
+                <span className="text-gray-400 text-sm">AI is thinking...</span>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
-{showRecommendationsButton && (
-  <div className="text-center mt-4">
-    <p className="text-white mb-2">Great! I’ve found some products that might be perfect for you.</p>
-    <button
-      className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-      onClick={() => {
-        onRecommendations(tempRecommendations);
-        onClose();
-      }}
-    >
-      Show Recommended Products
-    </button>
-  </div>
-)}
-
+      {showRecommendationsButton && (
+        <div className="text-center mb-6 p-4 bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl animate-scale-in">
+          <div className="text-2xl mb-2">🎉</div>
+          <p className="text-white mb-4 font-semibold">Great! I've found some products that might be perfect for you.</p>
+          <button
+            className="gradient-secondary text-black px-6 py-3 rounded-xl font-bold hover:shadow-glow transition-all-smooth hover:scale-105"
+            onClick={() => {
+              onRecommendations(tempRecommendations);
+              onClose();
+            }}
+          >
+            ✨ Show Recommended Products
+          </button>
+        </div>
+      )}
 
       {/* Input */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-end gap-3 bg-gray-800 p-4 rounded-2xl border border-gray-700">
         <TextareaAutosize
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask me anything..."
-          className="flex-grow resize-none p-2 rounded-lg border bg-zinc-900 text-white"
+          placeholder="💬 Ask me anything about products..."
+          className="flex-grow resize-none p-3 rounded-xl border-2 border-gray-600 bg-gray-900 text-white focus:border-[#0071ce] transition-colors text-base"
           minRows={1}
           maxRows={4}
           onKeyDown={(e) => {
@@ -121,13 +158,15 @@ const ProductAdvisorChat = ({ products, onClose,subcategoryName, onRecommendatio
         <button
           onClick={handleSend}
           disabled={!input.trim()}
-          className={`px-4 py-2 rounded-lg ${input.trim() ? "bg-blue-600 text-white" : "bg-gray-500 text-gray-300"}`}
+          className={`px-6 py-3 rounded-xl font-bold transition-all-smooth ${
+            input.trim() 
+              ? "gradient-primary text-white hover:shadow-glow hover:scale-105" 
+              : "bg-gray-600 text-gray-400 cursor-not-allowed"
+          }`}
         >
-          Send
+          🚀 Send
         </button>
       </div>
-
-      <button onClick={onClose} className="text-sm text-gray-300 mt-2 underline self-center">Close Chat</button>
     </div>
   );
 };
