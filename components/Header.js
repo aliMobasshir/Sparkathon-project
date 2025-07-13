@@ -65,8 +65,8 @@ export default function Header({
               className="text-[#0071ce] font-bold text-3xl cursor-pointer hover:scale-105 transition-all-smooth"
               onClick={handleLogoClick}
             >
-              <span className="gradient-secondary text-[#0071ce] px-3 py-2 rounded-xl shadow-medium animate-float">W</span>
-              <span className="ml-1">almart</span>
+              <span className="gradient-secondary text-[#0071ce] px-3 py-2 rounded-xl shadow-medium animate-float">S</span>
+              <span className="ml-1">parkmart</span>
             </div>
           </div>
 

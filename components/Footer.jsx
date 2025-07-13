@@ -27,7 +27,7 @@ export default function Footer() {
     {
       title: "Services",
       links: [
-        "Walmart+",
+        "Sparkmart+",
         "Grocery Pickup",
         "Pharmacy",
         "Financial Services",
@@ -77,8 +77,8 @@ export default function Footer() {
             {/* Company Info */}
             <div className="lg:col-span-1">
               <div className="text-[#0071ce] font-bold text-3xl mb-6 hover:scale-105 transition-transform cursor-pointer">
-                <span className="gradient-secondary text-[#0071ce] px-3 py-2 rounded-xl shadow-medium">W</span>
-                <span className="ml-1">almart</span>
+                <span className="gradient-secondary text-[#0071ce] px-3 py-2 rounded-xl shadow-medium">S</span>
+                <span className="ml-1">parkmart</span>
               </div>
               <p className="text-gray-300 mb-6 text-lg leading-relaxed">
                 💰 Save money. ✨ Live better. Your one-stop shop for everything you need and more.
@@ -123,7 +123,7 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-sm text-gray-300 font-medium">📞 Customer Service</p>
-                <p className="font-bold text-lg">1-800-WALMART</p>
+                <p className="font-bold text-lg">1-800-SPARKMART</p>
               </div>
             </div>
             <div className="flex items-center space-x-4 hover:scale-105 transition-transform cursor-pointer">
@@ -132,7 +132,7 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-sm text-gray-300 font-medium">✉️ Email Us</p>
-                <p className="font-bold text-lg">help@walmart.com</p>
+                <p className="font-bold text-lg">help@sparkmart.com</p>
               </div>
             </div>
             <div className="flex items-center space-x-4 hover:scale-105 transition-transform cursor-pointer">
@@ -152,7 +152,7 @@ export default function Footer() {
       <div className="border-t border-gray-700 py-6 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between text-base text-gray-400">
-            <p className="font-medium">&copy; 2024 Walmart Inc. All rights reserved. Made with ❤️</p>
+            <p className="font-medium">&copy; 2024 Sparkmart Inc. All rights reserved. Made with ❤️</p>
             <div className="flex space-x-8 mt-4 md:mt-0">
               <a href="#" className="hover:text-white transition-all-smooth hover:scale-105 font-medium">🔒 Privacy Policy</a>
               <a href="#" className="hover:text-white transition-all-smooth hover:scale-105 font-medium">📋 Terms of Service</a>

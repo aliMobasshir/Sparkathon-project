@@ -116,17 +116,59 @@ export default function SubcategoryPageClient({
 
           {/* Hero Banner Clickable */}
           <div
-            className="relative h-48 md:h-56 rounded-lg overflow-hidden bg-gradient-to-r from-[#0071ce] to-[#004c87] cursor-pointer"
+            className="relative h-64 md:h-72 rounded-2xl overflow-hidden cursor-pointer group shadow-strong hover:shadow-glow transition-all-smooth"
             onClick={() => setShowChat(true)}
           >
-            <div className="absolute inset-0 flex items-center justify-center text-white text-center px-4">
-              <div>
-                <h2 className="text-2xl md:text-4xl font-bold mb-2">
-                  Having trouble selecting the right {subcategoryName} for you?
+            {/* Animated Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 animate-gradient-x"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+            
+            {/* Floating Elements */}
+            <div className="absolute top-6 right-6 w-20 h-20 bg-white/10 rounded-full blur-xl animate-float"></div>
+            <div className="absolute bottom-8 left-8 w-16 h-16 bg-yellow-400/20 rounded-full blur-lg animate-float" style={{animationDelay: '1s'}}></div>
+            <div className="absolute top-1/2 right-1/4 w-12 h-12 bg-pink-400/15 rounded-full blur-md animate-float" style={{animationDelay: '2s'}}></div>
+            
+            {/* Content */}
+            <div className="absolute inset-0 flex items-center justify-center text-white text-center px-6">
+              <div className="max-w-4xl">
+                {/* AI Icon */}
+                <div className="mb-6 flex justify-center">
+                  <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-strong group-hover:scale-110 transition-transform">
+                    <span className="text-3xl">🤖</span>
+                  </div>
+                </div>
+                
+                <h2 className="text-3xl md:text-5xl font-black mb-4 drop-shadow-lg">
+                  <span className="text-gradient-secondary">Having trouble</span> selecting the right
                 </h2>
-                <p className="text-lg md:text-xl opacity-90">
-                  Find the best {subcategoryName.toLowerCase()} using our AI guide
+                <h3 className="text-2xl md:text-4xl font-bold mb-6 text-yellow-300 drop-shadow-lg">
+                  {subcategoryName} for you?
+                </h3>
+                
+                <p className="text-xl md:text-2xl mb-8 opacity-95 font-medium drop-shadow-md">
+                  ✨ Let our AI shopping assistant guide you to the perfect choice
                 </p>
+                
+                {/* CTA Button */}
+                <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black font-bold py-4 px-8 rounded-2xl shadow-strong hover:shadow-glow transition-all-smooth hover:scale-105 group-hover:animate-pulse">
+                  <span className="text-xl">🚀 Start AI Guide</span>
+                </div>
+                
+                {/* Features */}
+                <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm font-medium opacity-90">
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    <span>Personalized Recommendations</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></span>
+                    <span>Expert Product Knowledge</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{animationDelay: '1s'}}></span>
+                    <span>Instant Results</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
