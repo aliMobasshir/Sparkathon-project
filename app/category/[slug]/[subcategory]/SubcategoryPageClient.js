@@ -151,7 +151,7 @@ export default function SubcategoryPageClient({
                 
                 {/* CTA Button */}
                 <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black font-bold py-4 px-8 rounded-2xl shadow-strong hover:shadow-glow transition-all-smooth hover:scale-105 group-hover:animate-pulse">
-                  <span className="text-xl">🚀 Start AI Guide</span>
+                  <span className="text-xl">Start AI Guide</span>
                 </div>
                 
                 {/* Features */}
