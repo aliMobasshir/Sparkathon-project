@@ -6,7 +6,7 @@ import Hero from "@/components/Hero";
 import CategoryGrid from "@/components/CategoryGrid";
 import ProductGrid from "@/components/ProductGrid";
 import Footer from "@/components/Footer";
-import { products, featuredProducts, saleProducts } from "@/data/products";
+import {  featuredProducts, saleProducts } from "@/data/products";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
@@ -90,15 +90,6 @@ export default function Home() {
           />
         </section>
 
-        {/* All Products */}
-        <section className="mb-12">
-          <ProductGrid
-            title="All Products"
-            productsToShow={products}
-            onAddToCart={handleAddToCart}
-            showFilters={true}
-          />
-        </section>
       </main>
 
       <Footer />
