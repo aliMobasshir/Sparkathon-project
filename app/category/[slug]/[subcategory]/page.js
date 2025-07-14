@@ -28,8 +28,8 @@ export async function generateMetadata({ params }) {
   );
   
   return {
-    title: subcategoryName ? `${subcategoryName} - ${category?.name} - Walmart` : 'Subcategory - Walmart',
-    description: subcategoryName ? `Shop ${subcategoryName} in ${category?.name} at Walmart` : 'Shop products at Walmart',
+    title: subcategoryName ? `${subcategoryName} - ${category?.name} - Sparkmart` : 'Subcategory - Sparkmart',
+    description: subcategoryName ? `Shop ${subcategoryName} in ${category?.name} at Sparkmart` : 'Shop products at Sparkmart',
   };
 }
 

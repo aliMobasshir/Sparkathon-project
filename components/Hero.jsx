@@ -2,6 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const heroSlides = [
   {
@@ -32,6 +33,7 @@ const heroSlides = [
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -47,6 +49,22 @@ export default function Hero() {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  };
+
+  const handleCTAClick = (slideId) => {
+    switch(slideId) {
+      case 1:
+        router.push('/category/electronics');
+        break;
+      case 2:
+        router.push('/category/grocery');
+        break;
+      case 3:
+        router.push('/category/home-garden');
+        break;
+      default:
+        router.push('/');
+    }
   };
 
   return (
@@ -74,7 +92,10 @@ export default function Hero() {
                 <p className="text-xl md:text-3xl mb-10 animate-fade-in-delay font-medium drop-shadow-lg">
                   {slide.subtitle}
                 </p>
-                <button className="gradient-secondary hover:shadow-glow text-black font-bold py-5 px-10 rounded-2xl text-xl transition-all-smooth hover:scale-110 shadow-strong btn-scale animate-pulse-glow">
+                <button 
+                  onClick={() => handleCTAClick(slide.id)}
+                  className="gradient-secondary hover:shadow-glow text-black font-bold py-5 px-10 rounded-2xl text-xl transition-all-smooth hover:scale-110 shadow-strong btn-scale animate-pulse-glow"
+                >
                   {slide.cta}
                 </button>
               </div>

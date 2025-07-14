@@ -13,8 +13,8 @@ export async function generateMetadata({ params }) {
   const category = categories.find(cat => cat.slug === params.slug);
   
   return {
-    title: category ? `${category.name} - Walmart` : 'Category - Walmart',
-    description: category ? `Shop ${category.name} products at Walmart` : 'Shop products at Walmart',
+    title: category ? `${category.name} - Sparkmart` : 'Category - Sparkmart',
+    description: category ? `Shop ${category.name} products at Sparkmart` : 'Shop products at Sparkmart',
   };
 }
 
