@@ -149,11 +149,11 @@ export default function Header({
       {/* Navigation */}
       <nav className={`border-t border-gray-200 bg-gradient-to-r from-gray-50 to-white transition-all duration-300 transform ${
         isMenuOpen ? 'block' : showCategories ? 'hidden lg:block' : 'hidden lg:block lg:-translate-y-full lg:opacity-0'
-      } ${!showCategories && !isMenuOpen ? 'lg:pointer-events-none' : ''}`}>
+      } ${!showCategories && !isMenuOpen ? 'lg:pointer-events-none lg:border-0' : ''}`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className={`flex flex-col lg:flex-row lg:items-center lg:space-x-8 transition-all duration-300 ${
             isScrolled ? 'py-3' : 'py-4'
-          }`}>
+          } ${!showCategories && !isMenuOpen ? 'lg:py-0' : ''}`}>
             <button
               onClick={() => handleCategoryClick("")}
               className="flex items-center space-x-2 text-sm font-semibold text-gray-700 hover:text-[#0071ce] transition-all-smooth mb-4 lg:mb-0 p-2 rounded-lg hover:bg-white hover:shadow-soft"
