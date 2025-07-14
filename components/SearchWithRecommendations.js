@@ -184,7 +184,7 @@ export default function SearchWithRecommendations({
           <input
             ref={searchRef}
             type="text"
-            placeholder="🔍 Search everything at Sparkmart online and in store"
+            placeholder="Search everything at Sparkmart online and in store"
             className="flex-1 px-6 py-4 text-lg rounded-full outline-none bg-transparent"
             value={localQuery}
             onChange={handleInputChange}

@@ -15,7 +15,7 @@ export default function Footer() {
       ]
     },
     {
-      title: "About Walmart",
+      title: "About Sparkmart",
       links: [
         "Our Story",
         "Careers",

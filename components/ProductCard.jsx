@@ -127,12 +127,12 @@ export default function ProductCard({ product, onAddToCart }) {
           disabled={!product.inStock}
           className={`w-full py-4 px-6 rounded-xl font-bold transition-all-smooth flex items-center justify-center space-x-3 btn-scale ${
             product.inStock
-              ? 'gradient-primary hover:shadow-glow text-white shadow-medium hover:shadow-strong'
+              ? 'bg-[#0071ce] hover:bg-[#005a9c] text-white shadow-lg hover:shadow-xl'
               : 'bg-gray-300 text-gray-500 cursor-not-allowed opacity-60'
           }`}
         >
           <ShoppingCart className="h-5 w-5" />
-          <span className="text-lg">{product.inStock ? '🛒 Add to Cart' : '❌ Out of Stock'}</span>
+          <span className="text-base">{product.inStock ? 'Add to Cart' : 'Out of Stock'}</span>
         </button>
       </div>
     </div>
