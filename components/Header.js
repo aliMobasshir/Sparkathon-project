@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ShoppingCart, User, Menu, X, MapPin, Heart } from "lucide-react";
 import { categories } from "@/data/products";
 import { useRouter } from "next/navigation";
@@ -60,7 +61,9 @@ export default function Header({
           </div>
           <div className="flex items-center space-x-4">
             <span className={`animate-pulse ${isScrolled ? 'hidden md:block' : ''}`}>🚚 Free shipping on orders $35+</span>
+            <span className={`animate-pulse ${isScrolled ? 'hidden md:block' : ''}`}>🚚 Free shipping on orders $35+</span>
             <span>|</span>
+            <span className={`hover:text-yellow-200 transition-colors cursor-pointer ${isScrolled ? 'hidden lg:block' : ''}`}>📍 Store Directory</span>
             <span className={`hover:text-yellow-200 transition-colors cursor-pointer ${isScrolled ? 'hidden lg:block' : ''}`}>📍 Store Directory</span>
           </div>
         </div>
@@ -89,6 +92,7 @@ export default function Header({
           </div>
 
           {/* Search Bar */}
+          <div className="flex-1 max-w-3xl mx-4 hidden md:block">
           <div className="flex-1 max-w-3xl mx-4 hidden md:block">
             <SearchWithRecommendations
               onSearch={onSearch}
