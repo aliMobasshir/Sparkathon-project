@@ -68,7 +68,7 @@ export default function Header({
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 hover:text-yellow-200 transition-colors">
               <MapPin className="h-4 w-4" />
-              <span>Deliver to 12345</span>
+              <span className={isScrolled ? 'hidden sm:block' : ''}>Deliver to 12345</span>
             </div>
           </div>
           <div className="flex items-center space-x-4">
@@ -81,7 +81,7 @@ export default function Header({
 
       {/* Main Header */}
       <div className={`max-w-7xl mx-auto px-4 transition-all duration-300 ${
-        isScrolled ? 'py-3' : 'py-4'
+        isScrolled ? 'py-2' : 'py-3'
       }`}>
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -102,7 +102,7 @@ export default function Header({
           </div>
 
           {/* Search Bar */}
-          <div className="flex-1 max-w-3xl mx-8 hidden md:block">
+          <div className="flex-1 max-w-3xl mx-4 hidden md:block">
             <SearchWithRecommendations
               onSearch={onSearch}
               searchQuery={searchQuery}
@@ -110,7 +110,7 @@ export default function Header({
           </div>
 
           {/* Right Side Actions */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-3">
             <button className={`items-center space-x-2 hover:text-[#0071ce] transition-all-smooth hover:scale-105 p-2 rounded-lg ${
               isScrolled ? 'hidden lg:flex' : 'hidden md:flex'
             }`}>
@@ -137,7 +137,7 @@ export default function Header({
 
         {/* Mobile Search */}
         <div className={`md:hidden transition-all duration-300 ${
-          isScrolled ? 'mt-2' : 'mt-3'
+          isScrolled ? 'mt-1' : 'mt-2'
         }`}>
           <SearchWithRecommendations
             onSearch={onSearch}
@@ -152,7 +152,7 @@ export default function Header({
       } ${!showCategories && !isMenuOpen ? 'lg:pointer-events-none lg:border-0' : ''}`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className={`flex flex-col lg:flex-row lg:items-center lg:space-x-8 transition-all duration-300 ${
-            isScrolled ? 'py-3' : 'py-4'
+            isScrolled ? 'py-2' : 'py-3'
           } ${!showCategories && !isMenuOpen ? 'lg:py-0' : ''}`}>
             <button
               onClick={() => handleCategoryClick("")}
