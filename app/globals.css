@@ -214,6 +214,7 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 120px; /* Account for sticky header */
 }
 
 /* Enhanced scrollbar */
